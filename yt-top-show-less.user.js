@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         YouTube: Show less at top of description
 // @namespace    https://github.com/zex0s/yt-top-show-less
-// @version      1.6
+// @version      1.7
 // @description  Adds a copy of the description's "Show less" button right after the view count and date.
 // @match        https://www.youtube.com/*
 // @downloadURL  https://raw.githubusercontent.com/zex0s/yt-top-show-less/main/yt-top-show-less.user.js
 // @updateURL    https://raw.githubusercontent.com/zex0s/yt-top-show-less/main/yt-top-show-less.user.js
 // @grant        none
+// @inject-into  content
 // ==/UserScript==
 
 (() => {
