@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube: Show less at top of description
 // @namespace    https://github.com/zex0s/yt-top-show-less
-// @version      1.0
+// @version      1.1
 // @description  Adds a copy of the description's "Show less" button right after the view count and date.
 // @match        https://www.youtube.com/*
 // @downloadURL  https://raw.githubusercontent.com/zex0s/yt-top-show-less/main/yt-top-show-less.user.js
@@ -20,7 +20,8 @@
 
   // ponytail: polls every 500ms; swap for a MutationObserver if it ever matters
   setInterval(() => {
-    const info = document.querySelector('ytd-watch-metadata #info-container');
+    // the views/date line itself is a fixed 20px row, so insert below it, not inside
+    const info = document.querySelector('ytd-watch-metadata ytd-watch-info-text');
     if (!info || document.getElementById('top-show-less')) return;
     const btn = document.createElement('button');
     btn.id = 'top-show-less';
