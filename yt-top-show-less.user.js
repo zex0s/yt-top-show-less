@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube: Show less at top of description
 // @namespace    https://github.com/zex0s/yt-top-show-less
-// @version      1.4
+// @version      1.5
 // @description  Adds a copy of the description's "Show less" button right after the view count and date.
 // @match        https://www.youtube.com/*
 // @downloadURL  https://raw.githubusercontent.com/zex0s/yt-top-show-less/main/yt-top-show-less.user.js
@@ -13,7 +13,7 @@
   const style = document.createElement('style');
   style.textContent = `
     /* nowrap: the clone carries newline text nodes that white-space:pre turns into extra lines */
-    #top-show-less { display: none; margin: 0 0 0 8px; flex-shrink: 0; align-self: flex-start; white-space: nowrap; }
+    #top-show-less { display: none; margin: 0 0 0 auto; padding-left: 8px; flex-shrink: 0; align-self: flex-start; white-space: nowrap; }
     ytd-watch-metadata:has(ytd-text-inline-expander[is-expanded]) #top-show-less { display: inline-flex; }
   `;
   document.head.append(style);
