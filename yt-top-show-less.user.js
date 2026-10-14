@@ -13,7 +13,7 @@
   const style = document.createElement('style');
   style.textContent = `
     /* nowrap: the clone carries newline text nodes that white-space:pre turns into extra lines */
-    #top-show-less { display: none; margin: 0 0 0 auto; padding-left: 8px; flex-shrink: 0; align-self: flex-start; white-space: nowrap; }
+    #top-show-less { display: none; margin: 0 0 0 auto; flex-shrink: 0; align-self: flex-start; white-space: nowrap; }
     ytd-watch-metadata:has(ytd-text-inline-expander[is-expanded]) #top-show-less { display: inline-flex; }
   `;
   document.head.append(style);
