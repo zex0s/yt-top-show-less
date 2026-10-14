@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube: Show less at top of description
 // @namespace    https://github.com/zex0s/yt-top-show-less
-// @version      1.3
+// @version      1.4
 // @description  Adds a copy of the description's "Show less" button right after the view count and date.
 // @match        https://www.youtube.com/*
 // @downloadURL  https://raw.githubusercontent.com/zex0s/yt-top-show-less/main/yt-top-show-less.user.js
@@ -12,15 +12,15 @@
 (() => {
   const style = document.createElement('style');
   style.textContent = `
-    #top-show-less { display: none; margin: 0; }
+    /* nowrap: the clone carries newline text nodes that white-space:pre turns into extra lines */
+    #top-show-less { display: none; margin: 0 0 0 8px; flex-shrink: 0; align-self: flex-start; white-space: nowrap; }
     ytd-watch-metadata:has(ytd-text-inline-expander[is-expanded]) #top-show-less { display: inline-flex; }
   `;
   document.head.append(style);
 
   // ponytail: polls every 500ms; swap for a MutationObserver if it ever matters
   setInterval(() => {
-    // the views/date line itself is a fixed 20px row, so insert below it, not inside
-    const info = document.querySelector('ytd-watch-metadata ytd-watch-info-text');
+    const info = document.querySelector('ytd-watch-metadata #info-container');
     const collapse = document.querySelector('ytd-watch-metadata ytd-text-inline-expander #collapse');
     if (!info || !collapse || document.getElementById('top-show-less')) return;
     // clone the real button so it keeps YouTube's styling classes
@@ -30,6 +30,6 @@
       e.stopPropagation(); // the description box expands on any click
       document.querySelector('ytd-watch-metadata ytd-text-inline-expander #collapse')?.click();
     });
-    info.after(btn);
+    info.append(btn);
   }, 500);
 })();
